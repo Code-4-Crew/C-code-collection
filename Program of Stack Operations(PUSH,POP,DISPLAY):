@@ -1,0 +1,73 @@
+#include <stdio.h>
+#include <stdlib.h>
+#define size 3
+
+int A[size],top=-1;
+
+void push();
+void pop();
+void display();
+
+int main()
+{
+    int choice;
+    while(1)
+    {
+        printf("1.Push\n2.Pop\n3.Display\n4.Exit\n");
+        printf("Enter the choice:\n");
+        scanf("%d",&choice);
+        switch(choice)
+        {
+            case 1:push();break;
+            case 2:pop();break;
+            case 3:display();break;
+            case 4:exit(1);
+            default:printf("Invlid choice!!\n");
+        }
+    }
+    return 0;
+}
+void push()
+{
+    int element;
+    if(top==size-1)
+    {
+        printf("No space in stack!!\n");
+        return;
+    }
+    else
+    {
+        printf("Enter the element to push:\n");
+        scanf("%d",&element);
+        top++;
+        A[top]=element;
+    }
+}
+void pop()
+{
+    if(top==-1)
+    {
+        printf("Stack is empty n which may cause underflow!\n");
+        return;
+    }
+    else
+    {
+        printf("Enter the popped element:%d\n",A[top]);
+        top--;
+    }
+}
+void display()
+{
+    int i;
+    if(top==-1)
+    {
+        printf("Stack is empty!\n");
+        return;
+    }
+    else
+    {
+        printf("***Stack Content***\n");
+        for(i=top;i>=0;i--)
+            printf("%d\n",A[i]);
+    }
+}
